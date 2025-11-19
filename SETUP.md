@@ -27,7 +27,7 @@ python -m SimpleHTTPServer 8000
 npx http-server -p 8000
 ```
 
-Then open your browser and navigate to: `http://localhost:8000/JelvanWebsiteNew.html`
+Then open your browser and navigate to: `http://localhost:8000/index.html`
 
 ### Option 3: Deploy to Web Hosting
 Upload the HTML file to any web hosting service:
