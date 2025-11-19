@@ -203,6 +203,41 @@
       transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     
+    /* Pop-out animation for service nodes */
+    @keyframes pop-out {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .service-node.pop-out {
+      animation: pop-out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+    
+    /* Selected service node styles - bigger and square */
+    .service-node.selected {
+      width: 140px !important;
+      height: 140px !important;
+      border-radius: 1.5rem !important;
+      transform: scale(1.15) !important;
+      z-index: 100;
+      box-shadow: 0 25px 50px -12px rgba(234, 88, 12, 0.5) !important;
+    }
+    
+    /* Hover effect for service nodes */
+    .service-node:hover:not(.selected) {
+      transform: scale(1.1);
+      box-shadow: 0 20px 30px -10px rgba(234, 88, 12, 0.4);
+    }
+    
     /* Paper Unfold Animation - Folded in 4 effect */
     @keyframes paper-unfold {
       0% {
@@ -1832,8 +1867,12 @@
           const x = radius * Math.cos(angle);
           const y = radius * Math.sin(angle);
           
-          node.style.transform = `translate(${x}px, ${y}px)`;
-          node.style.opacity = "1";
+          // Add pop-out animation class with delay
+          setTimeout(() => {
+            node.classList.add('pop-out');
+            node.style.transform = `translate(${x}px, ${y}px)`;
+            node.style.opacity = "1";
+          }, index * 80); // Stagger the animations
         });
       }, 100);
     }
@@ -1850,8 +1889,9 @@
       const node5 = document.getElementById("service-node-modal-5");
       const node6 = document.getElementById("service-node-modal-6");
       
-      // Collapse nodes back to center
+      // Collapse nodes back to center and remove classes
       [node1, node2, node3, node4, node5, node6].forEach((node) => {
+        node.classList.remove('pop-out', 'selected');
         node.style.transform = "translate(0, 0)";
         node.style.opacity = "0";
       });
@@ -1860,6 +1900,21 @@
       setTimeout(() => {
         hub.style.transform = "scale(1)";
       }, 300);
+    }
+
+    function selectServiceNode(node, serviceId) {
+      // Remove selected class from all nodes
+      const allNodes = document.querySelectorAll('.service-node');
+      allNodes.forEach(n => n.classList.remove('selected'));
+      
+      // Add selected class to clicked node
+      node.classList.add('selected');
+      
+      // Wait for the selection animation, then close modal and show details
+      setTimeout(() => {
+        closeServicesModal();
+        setTimeout(() => showServiceDetails(serviceId), 700);
+      }, 400);
     }
 
     function setupFloatingServicesModal() {
@@ -1894,38 +1949,32 @@
       // Setup click handlers for modal service nodes
       if (node1) {
         node1.addEventListener("click", () => {
-          closeServicesModal();
-          setTimeout(() => showServiceDetails(1), 700);
+          selectServiceNode(node1, 1);
         });
       }
       if (node2) {
         node2.addEventListener("click", () => {
-          closeServicesModal();
-          setTimeout(() => showServiceDetails(2), 700);
+          selectServiceNode(node2, 2);
         });
       }
       if (node3) {
         node3.addEventListener("click", () => {
-          closeServicesModal();
-          setTimeout(() => showServiceDetails(3), 700);
+          selectServiceNode(node3, 3);
         });
       }
       if (node4) {
         node4.addEventListener("click", () => {
-          closeServicesModal();
-          setTimeout(() => showServiceDetails(4), 700);
+          selectServiceNode(node4, 4);
         });
       }
       if (node5) {
         node5.addEventListener("click", () => {
-          closeServicesModal();
-          setTimeout(() => showServiceDetails(5), 700);
+          selectServiceNode(node5, 5);
         });
       }
       if (node6) {
         node6.addEventListener("click", () => {
-          closeServicesModal();
-          setTimeout(() => showServiceDetails(6), 700);
+          selectServiceNode(node6, 6);
         });
       }
     }
