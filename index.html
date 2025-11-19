@@ -384,12 +384,12 @@
       height: 100vh;
       transform: translate(-50%, -50%);
       border: none;
-      object-fit: cover;
     }
     
-    /* Responsive video sizing */
+    /* Ensure video covers the entire screen on all aspect ratios */
     @media (min-aspect-ratio: 16/9) {
       .video-wallpaper iframe {
+        width: 100vw;
         height: 56.25vw; /* 9/16 = 0.5625 */
       }
     }
@@ -397,6 +397,7 @@
     @media (max-aspect-ratio: 16/9) {
       .video-wallpaper iframe {
         width: 177.78vh; /* 16/9 = 1.7778 */
+        height: 100vh;
       }
     }
     
@@ -445,7 +446,7 @@
  <body class="h-full text-slate-900">
   <!-- Video Wallpaper Background -->
   <div class="video-wallpaper">
-   <div style="position:relative; width:100%; height:0px; padding-bottom:52.344%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/y46wsu?autoplay=1&muted=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+   <iframe allow="fullscreen;autoplay" allowfullscreen src="https://streamable.com/e/y46wsu?autoplay=1&muted=1&nocontrols=1"></iframe>
   </div>
   
   <!-- Overlay for content readability -->
