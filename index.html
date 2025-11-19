@@ -272,6 +272,26 @@
       transform-style: preserve-3d;
       perspective: 1000px;
     }
+    
+    /* Popup Scale Animation - Small box to big box transformation */
+    @keyframes popup-scale {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .animate-popup-scale {
+      animation: popup-scale 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
@@ -913,7 +933,7 @@
    </div>
   </div><!-- Service Details Modal -->
   <div id="service-modal" class="hidden fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-   <div class="relative w-full max-w-3xl max-h-[90%] overflow-y-auto rounded-2xl bg-white shadow-2xl animate-paper-unfold">
+   <div class="relative w-full max-w-3xl max-h-[90%] overflow-y-auto rounded-2xl bg-white shadow-2xl animate-popup-scale">
     <div class="sticky top-0 bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between">
      <div class="flex items-center gap-4">
       <button id="back-to-services" class="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center transition-colors" aria-label="Back to services" title="Back to services">
