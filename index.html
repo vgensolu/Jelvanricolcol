@@ -210,16 +210,16 @@
         transform: translate(0, 0) scale(0);
       }
       50% {
-        transform: scale(1.2);
+        transform: translate(var(--node-x), var(--node-y)) scale(1.2);
       }
       100% {
         opacity: 1;
-        transform: scale(1);
+        transform: translate(var(--node-x), var(--node-y)) scale(1);
       }
     }
     
     .service-node.pop-out {
-      animation: pop-out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+      animation: pop-out 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     }
     
     /* Selected service node styles - bigger and square */
@@ -1882,11 +1882,13 @@
           const x = radius * Math.cos(angle);
           const y = radius * Math.sin(angle);
           
-          // Add pop-out animation class with delay
+          // Set CSS custom properties for animation
+          node.style.setProperty('--node-x', `${x}px`);
+          node.style.setProperty('--node-y', `${y}px`);
+          
+          // Add pop-out animation class with staggered delay
           setTimeout(() => {
             node.classList.add('pop-out');
-            node.style.transform = `translate(${x}px, ${y}px)`;
-            node.style.opacity = "1";
           }, index * 80); // Stagger the animations
         });
       }, 100);
@@ -1907,7 +1909,10 @@
       // Collapse nodes back to center and remove classes
       [node1, node2, node3, node4, node5, node6].forEach((node) => {
         node.classList.remove('pop-out', 'selected');
-        node.style.transform = "translate(0, 0)";
+        // Reset CSS properties
+        node.style.setProperty('--node-x', '0px');
+        node.style.setProperty('--node-y', '0px');
+        node.style.transform = "translate(0, 0) scale(0)";
         node.style.opacity = "0";
       });
       
