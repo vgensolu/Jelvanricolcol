@@ -1805,7 +1805,13 @@
       const node6 = document.getElementById("service-node-6");
       
       if (hub) {
-        hub.addEventListener("click", expandServicesWheel);
+        hub.addEventListener("click", function() {
+          if (wheelExpanded) {
+            collapseServicesWheel();
+          } else {
+            expandServicesWheel();
+          }
+        });
       }
       
       if (node1) {
