@@ -17,6 +17,12 @@
     
     body {
       box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.5;
+      color: #0f172a;
+      background: linear-gradient(135deg, #f8fafc 0%, #ffedd5 50%, #ffffff 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
     }
     html, body {
       height: 100%;
@@ -27,6 +33,85 @@
     :focus-visible {
       outline: 2px solid #ea580c;
       outline-offset: 2px;
+    }
+    
+    /* Basic utility classes for fallback */
+    .hidden { display: none !important; }
+    .fixed { position: fixed; }
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    .p-8 { padding: 2rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .w-full { width: 100%; }
+    .max-w-6xl { max-width: 72rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .text-center { text-align: center; }
+    .text-white { color: #ffffff; }
+    .bg-white { background-color: #ffffff; }
+    .bg-black { background-color: #000000; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-3xl { border-radius: 1.5rem; }
+    .rounded-full { border-radius: 9999px; }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .border { border-width: 1px; border-style: solid; }
+    .border-slate-200 { border-color: #e2e8f0; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .space-y-6 > * + * { margin-top: 1.5rem; }
+    .space-y-24 > * + * { margin-top: 6rem; }
+    .backdrop-blur-xl { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .transition-all { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .cursor-pointer { cursor: pointer; }
+    .hover\:scale-105:hover { transform: scale(1.05); }
+    .hover\:shadow-2xl:hover { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .z-50 { z-index: 50; }
+    .z-\[70\] { z-index: 70; }
+    .z-\[80\] { z-index: 80; }
+    .z-\[90\] { z-index: 90; }
+    .z-\[100\] { z-index: 100; }
+    .top-0 { top: 0; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .overflow-hidden { overflow: hidden; }
+    .overflow-y-auto { overflow-y: auto; }
+    
+    /* Responsive grid */
+    @media (min-width: 768px) {
+      .md\:flex { display: flex; }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lg\:min-h-\[700px\] { min-height: 700px; }
     }
     .fade-in {
       opacity: 0;
@@ -100,6 +185,19 @@
     }
     .rotate-animation {
       animation: rotate-slow 20s linear infinite;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      }
+      50% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+    .animate-bounce {
+      animation: bounce 1s infinite;
     }
     .service-node {
       transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
