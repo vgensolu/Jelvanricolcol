@@ -534,7 +534,7 @@
    <section id="hero" class="fade-in min-h-[600px] lg:min-h-[700px]" aria-labelledby="hero-heading">
     <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 shadow-xl shadow-slate-300/60 overflow-hidden">
      <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px] lg:min-h-[700px]"><!-- Left: Portfolio Image -->
-      <div class="relative bg-gradient-to-br from-white via-slate-50 to-black p-4 lg:p-8 flex flex-col items-center justify-center overflow-hidden">
+      <div class="relative bg-gradient-to-br from-white via-slate-50 to-black p-4 lg:p-8 flex flex-col items-center justify-between overflow-hidden">
        <!-- Decorative Background Elements -->
        <div class="absolute inset-0 overflow-hidden">
         <div class="absolute top-10 left-10 w-32 h-32 bg-orange-200/30 rounded-full blur-3xl animate-pulse"></div>
@@ -545,8 +545,27 @@
         <img src="https://res.cloudinary.com/dzgh1ydmf/image/upload/v1763593119/Portfolio_tjft4c.png" alt="Jelvan Ricolcol Portfolio" class="w-full h-auto object-cover rounded-2xl shadow-xl shadow-slate-300/60 hover:scale-105 transition-transform duration-500" style="aspect-ratio: 1/1; max-height: 500px;" />
        </div>
        
-       <!-- Stats Grid -->
-       <div class="relative z-10 w-full max-w-md mx-auto mt-6">
+       <!-- Name & Title - Moved from right panel -->
+       <div class="relative z-10 w-full max-w-md mx-auto space-y-3 animate-fade-up delay-100">
+        <h1 class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent tracking-tight text-white animate-gradient">Jelvan R.</h1>
+        <p class="text-lg lg:text-xl text-orange-500 font-semibold">HR / People & Digital Solutions Professional</p>
+        
+        <!-- Tagline Quote -->
+        <div class="relative pl-4 border-l-4 border-orange-300 py-2 animate-slide-right delay-200">
+         <p class="text-sm lg:text-base text-slate-700 italic leading-relaxed font-medium">
+          "Empowering teams and businesses through smart people management and modern digital tools."
+         </p>
+        </div>
+        
+        <div class="flex items-center gap-2 pt-2 animate-fade-up delay-300">
+         <div class="w-3 h-3 rounded-full bg-emerald-500 pulse-glow"></div>
+         <p class="text-sm text-slate-900/90 font-medium">Freelancer / Available for opportunities</p>
+        </div>
+       </div>
+      </div><!-- Right: Profile Information -->
+      <div class="p-8 lg:p-12 flex flex-col justify-between bg-gradient-to-br from-white to-slate-100">
+       <!-- Stats Grid - Moved from left panel -->
+       <div class="space-y-4 max-w-md mx-auto w-full">
         <div class="grid grid-cols-2 gap-3 animate-fade-up delay-400">
          <div class="stat-card rounded-xl bg-gradient-to-br from-white/50 to-white/70 backdrop-blur-md border border-slate-300 p-3 text-center shadow-lg hover:bg-gradient-to-br hover:from-orange-600/10 hover:to-orange-700/10 hover:border-orange-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" data-tooltip="Managed HR operations for 30,000+ employees at Teleperformance USA Shared Services">
           <p class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">30K+</p>
@@ -566,31 +585,10 @@
          </div>
         </div>
        </div>
-      </div><!-- Right: Profile Information -->
-      <div class="p-8 lg:p-12 flex flex-col justify-between bg-gradient-to-br from-white to-slate-100">
-       <!-- Top Content -->
+       
+       <!-- Info Cards - Made transparent -->
        <div class="space-y-6 max-w-md mx-auto w-full">
-        <!-- Name & Title -->
-        <div class="space-y-4 animate-fade-up delay-100">
-         <h1 id="hero-heading" class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent tracking-tight text-white animate-gradient">Jelvan Ricolcol</h1>
-         <p class="text-xl lg:text-2xl text-orange-500 font-semibold">HR / People & Digital Solutions Professional</p>
-         
-         <!-- Tagline Quote -->
-         <div class="relative pl-4 border-l-4 border-orange-300 py-2 animate-slide-right delay-200">
-          <p class="text-base lg:text-lg text-slate-700 italic leading-relaxed font-medium">
-           "Empowering teams and businesses through smart people management and modern digital tools."
-          </p>
-         </div>
-         
-         <div class="flex items-center gap-2 pt-2 animate-fade-up delay-300">
-          <div class="w-3 h-3 rounded-full bg-emerald-500 pulse-glow"></div>
-          <p class="text-sm text-slate-900/90 font-medium">Freelancer / Available for opportunities</p>
-         </div>
-        </div>
-        
-        <!-- Quick Info -->
-        <div class="space-y-3 animate-slide-right delay-300">
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
+         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
           <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
            </svg>
@@ -601,7 +599,7 @@
           </div>
          </div>
          
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
+         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
           <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
            </svg>
@@ -612,7 +610,7 @@
           </div>
          </div>
          
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-orange-600/10 to-orange-700/10 backdrop-blur-md border border-orange-300 hover:shadow-xl hover:border-orange-500 hover:scale-105 transition-all duration-300">
+         <div class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-orange-600/5 to-orange-700/5 backdrop-blur-md border border-orange-300/50 hover:shadow-xl hover:border-orange-500 hover:scale-105 transition-all duration-300">
           <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
            <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
            </svg>
@@ -623,7 +621,7 @@
           </div>
          </div>
          
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
+         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
           <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
            </svg>
@@ -634,7 +632,7 @@
           </div>
          </div>
          
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
+         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
           <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
            </svg>
@@ -1582,7 +1580,7 @@
        <p class="text-xs text-slate-700 leading-relaxed">Thank you for visiting. This website showcases my professional experience, qualifications, and expertise as an HR professional. By accessing and using this website, you acknowledge that you have read, understood, and agree to be bound by the following terms and conditions.</p>
       </div><!-- Key Points Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-       <div class="rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 p-4">
+       <div class="rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 p-4">
         <div class="flex items-start gap-2 mb-2">
          <div class="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -1592,7 +1590,7 @@
         </div>
         <p class="text-xs text-slate-700 leading-relaxed">Contact form data (name, email, subject, message) collected solely for responding to inquiries. Never sold or shared with third parties for marketing.</p>
        </div>
-       <div class="rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 p-4">
+       <div class="rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 p-4">
         <div class="flex items-start gap-2 mb-2">
          <div class="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -1602,7 +1600,7 @@
         </div>
         <p class="text-xs text-slate-700 leading-relaxed">You have rights to access, rectify, erase, restrict processing, and request data portability under the Data Privacy Act of 2012 (Philippines), GDPR (Europe), and applicable international privacy regulations. Withdraw consent anytime at hello@jelvanricolcol.pro.</p>
        </div>
-       <div class="rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 p-4">
+       <div class="rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 p-4">
         <div class="flex items-start gap-2 mb-2">
          <div class="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -1612,7 +1610,7 @@
         </div>
         <p class="text-xs text-slate-700 leading-relaxed">Information stored securely using industry-standard encryption. Data retained maximum 2 years unless earlier deletion requested.</p>
        </div>
-       <div class="rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 p-4">
+       <div class="rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 p-4">
         <div class="flex items-start gap-2 mb-2">
          <div class="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -1622,7 +1620,7 @@
         </div>
         <p class="text-xs text-slate-700 leading-relaxed">No cookies, tracking pixels, or analytics tools used. Your browsing activity is completely private and not monitored.</p>
        </div>
-       <div class="rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 p-4">
+       <div class="rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 p-4">
         <div class="flex items-start gap-2 mb-2">
          <div class="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -1632,7 +1630,7 @@
         </div>
         <p class="text-xs text-slate-700 leading-relaxed">Portfolio intended for employers, recruiters, and professional contacts only. Information provided for professional evaluation purposes.</p>
        </div>
-       <div class="rounded-xl bg-slate-50/50 backdrop-blur-md border border-slate-300 p-4">
+       <div class="rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 p-4">
         <div class="flex items-start gap-2 mb-2">
          <div class="w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
           <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
