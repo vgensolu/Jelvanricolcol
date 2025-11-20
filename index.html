@@ -484,6 +484,42 @@
       z-index: 10;
       animation: scroll-indicator 2s ease-in-out infinite;
     }
+    
+    /* Portfolio Tab Styles */
+    .portfolio-tab {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .portfolio-tab.active {
+      color: #ea580c;
+      background: white;
+      border-bottom-color: #ea580c;
+    }
+    
+    .portfolio-tab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ea580c, transparent);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .portfolio-tab.active::before {
+      transform: translateX(0);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
@@ -499,7 +535,7 @@
      </div>
     </div>
     <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-600">
-      <a href="#hero" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="hero">Home</a> 
+      <a href="#professional-summary" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="professional-summary">Home</a> 
       <a href="#experience" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="experience">Experiences</a> 
       <a href="#education" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="education">Education</a>
       <a href="#" id="show-privacy-nav" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1">Privacy Policy</a>
@@ -530,133 +566,7 @@
     </div>
   </section>
   
-  <main class="max-w-6xl mx-auto px-6 pt-28 pb-16 space-y-24 bg-white"><!-- Hero Section -->
-   <section id="hero" class="fade-in min-h-[600px] lg:min-h-[700px]" aria-labelledby="hero-heading">
-    <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 shadow-xl shadow-slate-300/60 overflow-hidden">
-     <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px] lg:min-h-[700px]"><!-- Left: Portfolio Image -->
-      <div class="relative bg-gradient-to-br from-white via-slate-50 to-black p-4 lg:p-8 flex flex-col items-center justify-between overflow-hidden">
-       <!-- Decorative Background Elements -->
-       <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-10 left-10 w-32 h-32 bg-orange-200/30 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-20 right-10 w-40 h-40 bg-orange-200/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-       </div>
-       <!-- Portfolio Image -->
-       <div class="relative z-10 w-full max-w-md mx-auto flex items-center justify-center animate-scale">
-        <img src="https://res.cloudinary.com/dzgh1ydmf/image/upload/v1763593119/Portfolio_tjft4c.png" alt="Jelvan Ricolcol Portfolio" class="w-full h-auto object-cover rounded-2xl shadow-xl shadow-slate-300/60 hover:scale-105 transition-transform duration-500" style="aspect-ratio: 1/1; max-height: 500px;" />
-       </div>
-       
-       <!-- Name & Title - Moved from right panel -->
-       <div class="relative z-10 w-full max-w-md mx-auto space-y-3 animate-fade-up delay-100">
-        <h1 class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent tracking-tight text-white animate-gradient">Jelvan R.</h1>
-        <p class="text-lg lg:text-xl text-orange-500 font-semibold">HR / People & Digital Solutions Professional</p>
-        
-        <!-- Tagline Quote -->
-        <div class="relative pl-4 border-l-4 border-orange-300 py-2 animate-slide-right delay-200">
-         <p class="text-sm lg:text-base text-slate-700 italic leading-relaxed font-medium">
-          "Empowering teams and businesses through smart people management and modern digital tools."
-         </p>
-        </div>
-        
-        <div class="flex items-center gap-2 pt-2 animate-fade-up delay-300">
-         <div class="w-3 h-3 rounded-full bg-emerald-500 pulse-glow"></div>
-         <p class="text-sm text-slate-900/90 font-medium">Freelancer / Available for opportunities</p>
-        </div>
-       </div>
-      </div><!-- Right: Profile Information -->
-      <div class="p-8 lg:p-12 flex flex-col justify-between bg-gradient-to-br from-white to-slate-100">
-       <!-- Stats Grid - Moved from left panel -->
-       <div class="space-y-4 max-w-md mx-auto w-full">
-        <div class="grid grid-cols-2 gap-3 animate-fade-up delay-400">
-         <div class="stat-card rounded-xl bg-gradient-to-br from-white/50 to-white/70 backdrop-blur-md border border-slate-300 p-3 text-center shadow-lg hover:bg-gradient-to-br hover:from-orange-600/10 hover:to-orange-700/10 hover:border-orange-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" data-tooltip="Managed HR operations for 30,000+ employees at Teleperformance USA Shared Services">
-          <p class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">30K+</p>
-          <p class="text-xs text-slate-500 mt-1 font-medium">Employees</p>
-         </div>
-         <div class="stat-card rounded-xl bg-gradient-to-br from-white/50 to-white/70 backdrop-blur-md border border-slate-300 p-3 text-center shadow-lg hover:bg-gradient-to-br hover:from-orange-600/10 hover:to-orange-700/10 hover:border-orange-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" data-tooltip="Onboarded 70+ remote agents weekly as Offshore Onboarding Specialist at Teleperformance USA">
-          <p class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">70+</p>
-          <p class="text-xs text-slate-500 mt-1 font-medium">Weekly</p>
-         </div>
-         <div class="stat-card rounded-xl bg-gradient-to-br from-white/50 to-white/70 backdrop-blur-md border border-slate-300 p-3 text-center shadow-lg hover:bg-gradient-to-br hover:from-orange-600/10 hover:to-orange-700/10 hover:border-orange-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" data-tooltip="Successfully completed 20+ projects across HR consulting, website development, and digital advertising">
-          <p class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">20+</p>
-          <p class="text-xs text-slate-500 mt-1 font-medium">Completed projects</p>
-         </div>
-         <div class="stat-card rounded-xl bg-gradient-to-br from-white/50 to-white/70 backdrop-blur-md border border-slate-300 p-3 text-center shadow-lg hover:bg-gradient-to-br hover:from-orange-600/10 hover:to-orange-700/10 hover:border-orange-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 cursor-pointer" data-tooltip="Perfect 4.0 GPA achieved in dual Master's degrees (HR Management &amp; AI for Business) at Universidad Isabel I">
-          <p class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">4.0</p>
-          <p class="text-xs text-slate-500 mt-1 font-medium">GPA</p>
-         </div>
-        </div>
-       </div>
-       
-       <!-- Info Cards - Made transparent -->
-       <div class="space-y-6 max-w-md mx-auto w-full">
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-           <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-           </svg>
-          </div>
-          <div>
-           <p class="text-xs text-slate-500 font-medium">Current Location</p>
-           <p class="text-sm text-slate-900 font-semibold">Kuala Lumpur, Malaysia</p>
-          </div>
-         </div>
-         
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-           <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-           </svg>
-          </div>
-          <div>
-           <p class="text-xs text-slate-500 font-medium">Permanent Address</p>
-           <p class="text-sm text-slate-900 font-semibold">Ilocos Norte, Philippines</p>
-          </div>
-         </div>
-         
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-orange-600/5 to-orange-700/5 backdrop-blur-md border border-orange-300/50 hover:shadow-xl hover:border-orange-500 hover:scale-105 transition-all duration-300">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-           <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-           </svg>
-          </div>
-          <div>
-           <p class="text-xs text-orange-400 font-medium">Freelancing</p>
-           <p class="text-sm text-slate-900 font-bold">3+ Years</p>
-          </div>
-         </div>
-         
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-           <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-           </svg>
-          </div>
-          <div>
-           <p class="text-xs text-slate-500 font-medium">Total Experience</p>
-           <p class="text-sm text-slate-900 font-semibold">7+ Years: HR • CX • Digital Ads • AI</p>
-          </div>
-         </div>
-         
-         <div class="flex items-center gap-3 p-3 rounded-xl bg-white/20 backdrop-blur-md border border-slate-300/50 hover:shadow-lg hover:border-orange-600 hover:scale-105 transition-all duration-300">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-           <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-           </svg>
-          </div>
-          <div>
-           <p class="text-xs text-slate-500 font-medium">Education</p>
-           <p class="text-sm text-slate-900 font-semibold">Dual Master's Degree + BS in Human Resources</p>
-          </div>
-         </div>
-        </div>
-       </div>
-       
-       <!-- Bottom Content: CTA Button -->
-       <div class="space-y-4 max-w-md mx-auto w-full">
-        <!-- CTA Button --> 
-        <button class="w-full px-6 py-4 rounded-xl bg-gradient-to-br from-orange-600 to-orange-700 text-white text-sm font-bold shadow-xl hover:from-orange-700 hover:to-orange-800 hover:scale-105 hover:shadow-xl shadow-slate-300/60 transition-all duration-300 flex items-center justify-center gap-2 animate-scale delay-500 pulse-glow" data-scroll-target="#contact">
-         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-         </svg> Download Resume 
-        </button>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
+  <main class="max-w-6xl mx-auto px-6 pt-28 pb-16 space-y-24 bg-white">
    
    <!-- Professional Summary Section -->
    <section id="professional-summary" class="fade-in" aria-labelledby="professional-summary-heading">
@@ -768,6 +678,203 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg> Download Resume 
        </button>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Tabbed Portfolio Viewer Section -->
+   <section id="portfolio-viewer" class="fade-in" aria-labelledby="portfolio-viewer-heading">
+    <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 shadow-xl shadow-slate-300/60 overflow-hidden">
+     <!-- Folder Tabs / Ribbons -->
+     <div class="relative">
+      <div class="flex border-b border-slate-200 bg-gradient-to-b from-slate-100 to-white">
+       <button class="portfolio-tab active px-6 py-4 text-sm font-semibold text-slate-700 border-b-2 border-orange-500 bg-white relative transition-all duration-300 hover:bg-orange-50" data-tab="overview">
+        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        Overview
+       </button>
+       <button class="portfolio-tab px-6 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-50 transition-all duration-300" data-tab="experience">
+        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        Experience
+       </button>
+       <button class="portfolio-tab px-6 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-50 transition-all duration-300" data-tab="education">
+        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+        </svg>
+        Education
+       </button>
+       <button class="portfolio-tab px-6 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-50 transition-all duration-300" data-tab="skills">
+        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+        </svg>
+        Skills
+       </button>
+      </div>
+     </div>
+     
+     <!-- Tab Content Container -->
+     <div class="p-8 lg:p-12 min-h-[500px]">
+      <!-- Overview Tab Content -->
+      <div id="tab-overview" class="tab-content active animate-paper-unfold">
+       <h2 class="text-3xl font-bold text-slate-900 mb-6">Portfolio Overview</h2>
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
+         <h3 class="text-xl font-bold text-slate-900 mb-3">Professional Summary</h3>
+         <p class="text-sm text-slate-700 leading-relaxed">
+          Experienced HR professional with 7+ years across HR management, customer experience, digital advertising, and AI-driven solutions. Currently serving as Global English Advertising Advisor at Concentrix Philippines, managing digital advertising strategy and brand safety for international brands.
+         </p>
+        </div>
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200">
+         <h3 class="text-xl font-bold text-slate-900 mb-3">Quick Stats</h3>
+         <ul class="space-y-2 text-sm text-slate-700">
+          <li class="flex items-center gap-2">
+           <span class="text-orange-500">•</span>
+           <span><strong>30,000+</strong> employees managed in HR operations</span>
+          </li>
+          <li class="flex items-center gap-2">
+           <span class="text-orange-500">•</span>
+           <span><strong>70+</strong> remote agents onboarded weekly</span>
+          </li>
+          <li class="flex items-center gap-2">
+           <span class="text-orange-500">•</span>
+           <span><strong>20+</strong> projects completed across various domains</span>
+          </li>
+          <li class="flex items-center gap-2">
+           <span class="text-orange-500">•</span>
+           <span><strong>4.0 GPA</strong> in dual Master's degrees</span>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="mt-6 p-6 rounded-2xl bg-white border border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900 mb-3">Core Competencies</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+         <div class="px-4 py-2 rounded-lg bg-orange-50 text-center text-sm font-semibold text-slate-700">HR Management</div>
+         <div class="px-4 py-2 rounded-lg bg-orange-50 text-center text-sm font-semibold text-slate-700">Digital Marketing</div>
+         <div class="px-4 py-2 rounded-lg bg-orange-50 text-center text-sm font-semibold text-slate-700">AI Solutions</div>
+         <div class="px-4 py-2 rounded-lg bg-orange-50 text-center text-sm font-semibold text-slate-700">Web Development</div>
+        </div>
+       </div>
+      </div>
+      
+      <!-- Experience Tab Content -->
+      <div id="tab-experience" class="tab-content hidden">
+       <h2 class="text-3xl font-bold text-slate-900 mb-6">Professional Experience</h2>
+       <div class="space-y-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all duration-300">
+         <div class="flex items-start justify-between mb-3">
+          <div>
+           <h3 class="text-lg font-bold text-slate-900">Global English Advertising Advisor</h3>
+           <p class="text-sm text-orange-500 font-medium">Concentrix Philippines</p>
+          </div>
+          <span class="text-xs text-slate-500 font-medium">Current</span>
+         </div>
+         <p class="text-sm text-slate-700">Managing digital advertising strategy, platform policy compliance, and brand safety for international brands.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all duration-300">
+         <div class="flex items-start justify-between mb-3">
+          <div>
+           <h3 class="text-lg font-bold text-slate-900">Offshore Human Resources Specialist</h3>
+           <p class="text-sm text-orange-500 font-medium">Teleperformance USA - Shared Services</p>
+          </div>
+          <span class="text-xs text-slate-500 font-medium">2 Years</span>
+         </div>
+         <p class="text-sm text-slate-700">Supported HR operations for 30,000+ employees across the United States.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all duration-300">
+         <div class="flex items-start justify-between mb-3">
+          <div>
+           <h3 class="text-lg font-bold text-slate-900">Offshore Onboarding Specialist</h3>
+           <p class="text-sm text-orange-500 font-medium">Teleperformance USA</p>
+          </div>
+          <span class="text-xs text-slate-500 font-medium">6 Months</span>
+         </div>
+         <p class="text-sm text-slate-700">Managed end-to-end onboarding for approximately 70 remote agents weekly.</p>
+        </div>
+       </div>
+      </div>
+      
+      <!-- Education Tab Content -->
+      <div id="tab-education" class="tab-content hidden">
+       <h2 class="text-3xl font-bold text-slate-900 mb-6">Academic Credentials</h2>
+       <div class="space-y-6">
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
+         <div class="flex items-center justify-between mb-3">
+          <h3 class="text-xl font-bold text-slate-900">Dual Master's Degrees</h3>
+          <span class="px-3 py-1 rounded-full bg-orange-600 text-white text-xs font-bold">Completed</span>
+         </div>
+         <p class="text-sm text-orange-600 font-medium mb-3">Universidad Isabel I, Spain • 2025 • GPA: 4.0</p>
+         <div class="space-y-3">
+          <div class="pl-4 border-l-2 border-orange-600">
+           <h4 class="text-sm font-bold text-slate-900 mb-1">Master's in HR & Talent Management</h4>
+           <p class="text-xs text-slate-700">Strategic HR management, organizational behavior, and talent development.</p>
+          </div>
+          <div class="pl-4 border-l-2 border-orange-600">
+           <h4 class="text-sm font-bold text-slate-900 mb-1">Master's in AI for Business</h4>
+           <p class="text-xs text-slate-700">AI-driven analytics, predictive modeling, and HR automation.</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200">
+         <div class="flex items-center justify-between mb-3">
+          <h3 class="text-xl font-bold text-slate-900">BS Business Administration</h3>
+          <span class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-xs font-bold">Completed</span>
+         </div>
+         <p class="text-sm text-slate-600 font-medium mb-2">University of Northern Philippines • 2018</p>
+         <p class="text-sm text-slate-700">Major: HR Development Management</p>
+        </div>
+       </div>
+      </div>
+      
+      <!-- Skills Tab Content -->
+      <div id="tab-skills" class="tab-content hidden">
+       <h2 class="text-3xl font-bold text-slate-900 mb-6">Core Competencies & Tools</h2>
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200">
+         <h3 class="text-lg font-bold text-slate-900 mb-4">HR & People Management</h3>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold">Recruitment</span>
+          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold">Onboarding</span>
+          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold">Performance Management</span>
+          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold">Employee Relations</span>
+          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold">Compliance</span>
+         </div>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200">
+         <h3 class="text-lg font-bold text-slate-900 mb-4">Digital & Marketing</h3>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Facebook Ads</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Google Ads</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">TikTok Ads</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Content Creation</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Brand Safety</span>
+         </div>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200">
+         <h3 class="text-lg font-bold text-slate-900 mb-4">Technical Skills</h3>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">HTML/CSS/JS</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Python</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Web Development</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Automation</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">AI Tools</span>
+         </div>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-slate-200">
+         <h3 class="text-lg font-bold text-slate-900 mb-4">Software & Platforms</h3>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Google Workspace</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Microsoft Office</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Canva</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Zoho</span>
+          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Slack</span>
+         </div>
+        </div>
+       </div>
       </div>
      </div>
     </div>
@@ -3244,6 +3351,37 @@
     }
 
 
+    function setupPortfolioTabs() {
+      const tabs = document.querySelectorAll('.portfolio-tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const targetTab = this.getAttribute('data-tab');
+          
+          // Remove active class from all tabs and contents
+          tabs.forEach(t => t.classList.remove('active'));
+          tabContents.forEach(content => {
+            content.classList.remove('active');
+            content.classList.remove('animate-paper-unfold');
+          });
+          
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          // Show corresponding content with animation
+          const targetContent = document.getElementById(`tab-${targetTab}`);
+          if (targetContent) {
+            targetContent.classList.add('active');
+            // Trigger animation by removing and re-adding class
+            setTimeout(() => {
+              targetContent.classList.add('animate-paper-unfold');
+            }, 10);
+          }
+        });
+      });
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       setupScrollButtons();
       setupContactForm();
@@ -3257,6 +3395,7 @@
       setupContactChannelModals();
       setupNavigationTracking();
       setupDownloadResumeButton();
+      setupPortfolioTabs();
       
       // Show welcome popup on first visit
       setTimeout(() => {
