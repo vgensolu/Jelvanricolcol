@@ -344,6 +344,22 @@
       perspective: 1000px;
     }
     
+    /* Paper slide animation for better visual feedback */
+    @keyframes paper-slide-in {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+    
+    .animate-paper-slide {
+      animation: paper-slide-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
     /* Popup Scale Animation - Small box to big box transformation */
     @keyframes popup-scale {
       0% {
@@ -536,11 +552,10 @@
     </div>
     <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-600">
       <a href="#professional-summary" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="professional-summary">Home</a> 
-      <a href="#experience" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="experience">Experiences</a> 
+      <a href="#portfolio-viewer" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="portfolio-viewer">Portfolio</a>
+      <a href="#experience" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="experience">Experience</a> 
       <a href="#education" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="education">Education</a>
-      <a href="#" id="show-privacy-nav" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1">Privacy Policy</a>
-      <a href="#skills" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="skills">Tools</a>
-      <button class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1 bg-transparent border-none cursor-pointer text-slate-600 font-medium text-xs" id="download-resume-btn">Download Resume</button>
+      <a href="#skills" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="skills">Skills</a>
       <a href="#contact" class="nav-link hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1" data-section="contact">Contact</a>
     </div>
    </nav>
@@ -566,7 +581,7 @@
     </div>
   </section>
   
-  <main class="max-w-6xl mx-auto px-6 pt-28 pb-16 space-y-24 bg-white">
+  <main class="max-w-6xl mx-auto px-6 pt-8 pb-16 space-y-16 bg-white">
    
    <!-- Professional Summary Section -->
    <section id="professional-summary" class="fade-in" aria-labelledby="professional-summary-heading">
@@ -3354,6 +3369,7 @@
     function setupPortfolioTabs() {
       const tabs = document.querySelectorAll('.portfolio-tab');
       const tabContents = document.querySelectorAll('.tab-content');
+      let currentAnimation = 'unfold'; // Track which animation to use
       
       tabs.forEach(tab => {
         tab.addEventListener('click', function() {
@@ -3364,18 +3380,26 @@
           tabContents.forEach(content => {
             content.classList.remove('active');
             content.classList.remove('animate-paper-unfold');
+            content.classList.remove('animate-paper-slide');
           });
           
           // Add active class to clicked tab
           this.classList.add('active');
           
-          // Show corresponding content with animation
+          // Show corresponding content with alternating animation
           const targetContent = document.getElementById(`tab-${targetTab}`);
           if (targetContent) {
             targetContent.classList.add('active');
             // Trigger animation by removing and re-adding class
             setTimeout(() => {
-              targetContent.classList.add('animate-paper-unfold');
+              // Alternate between unfold and slide animations for variety
+              if (currentAnimation === 'unfold') {
+                targetContent.classList.add('animate-paper-unfold');
+                currentAnimation = 'slide';
+              } else {
+                targetContent.classList.add('animate-paper-slide');
+                currentAnimation = 'unfold';
+              }
             }, 10);
           }
         });
