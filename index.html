@@ -453,6 +453,37 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+    
+    /* Cover section styles */
+    #cover-section {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Scroll indicator animation */
+    @keyframes scroll-indicator {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      animation: scroll-indicator 2s ease-in-out infinite;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
@@ -480,7 +511,26 @@
    <!-- Navigation Progress Indicator -->
    <div class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-orange-600 to-orange-700 transition-all duration-300" id="nav-progress" style="width: 0%;"></div>
   </header>
-  <main class="max-w-6xl mx-auto px-6 pt-28 pb-16 space-y-24"><!-- Hero Section -->
+  
+  <!-- Cover Image Section -->
+  <section id="cover-section" class="w-full min-h-screen flex items-center justify-center bg-white relative" style="scroll-snap-align: start;">
+    <div class="w-full h-screen flex items-center justify-center overflow-hidden">
+      <img 
+        src="https://res.cloudinary.com/dzgh1ydmf/image/upload/v1763603944/Works_gow2m8.png" 
+        alt="Cover Image" 
+        class="w-full h-full object-contain"
+        style="max-width: 100%; max-height: 100vh;"
+      />
+    </div>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+  
+  <main class="max-w-6xl mx-auto px-6 pt-28 pb-16 space-y-24 bg-white"><!-- Hero Section -->
    <section id="hero" class="fade-in min-h-[600px] lg:min-h-[700px]" aria-labelledby="hero-heading">
     <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 shadow-xl shadow-slate-300/60 overflow-hidden">
      <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px] lg:min-h-[700px]"><!-- Left: Portfolio Image -->
