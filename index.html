@@ -3579,11 +3579,19 @@
     }
     
     function handleCoverImageError(img) {
+      // Check if fallback has already been created (prevent duplicate calls)
+      const container = img.parentElement;
+      if (container.hasAttribute('data-fallback-loaded')) {
+        return;
+      }
+      
+      // Mark as processed
+      container.setAttribute('data-fallback-loaded', 'true');
+      
       // Hide the broken image
       img.style.display = 'none';
       
       // Create fallback content
-      const container = img.parentElement;
       const fallbackDiv = document.createElement('div');
       fallbackDiv.className = 'flex flex-col items-center justify-center h-full text-center px-6';
       
@@ -3602,7 +3610,12 @@
       fallbackDiv.appendChild(emoji);
       fallbackDiv.appendChild(heading);
       fallbackDiv.appendChild(paragraph);
-      container.innerHTML = '';
+      
+      // Safely clear container content
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      
       container.appendChild(fallbackDiv);
     }
   </script>
