@@ -535,6 +535,97 @@
     .tab-content.active {
       display: block;
     }
+    
+    /* Mobile Navigation Styles */
+    .mobile-menu-button {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 60;
+    }
+    
+    .mobile-menu-button span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-button.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+    
+    .mobile-menu-button.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-button.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+    
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      z-index: 40;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+      max-height: 500px;
+      border-bottom: 1px solid rgba(255, 163, 102, 0.3);
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      color: #d1d5db;
+      font-size: 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+    
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      color: #ffa366;
+      padding-left: 0.5rem;
+    }
+    
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+    
+    /* Desktop navigation - hidden on mobile */
+    .desktop-nav {
+      display: flex;
+    }
+    
+    /* Mobile responsive breakpoint */
+    @media (max-width: 767px) {
+      .desktop-nav {
+        display: none !important;
+      }
+      
+      .mobile-menu-button {
+        display: flex;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
@@ -549,7 +640,8 @@
      <div><span id="nav-name" class="block text-base font-semibold tracking-tight text-white">Jelvan Ricolcol</span> <span class="block text-[10px] text-orange-400 uppercase tracking-wider">HR Professional</span>
      </div>
     </div>
-    <div class="flex items-center gap-8 text-sm font-medium text-gray-300">
+    <!-- Desktop Navigation -->
+    <div class="desktop-nav flex items-center gap-8 text-sm font-medium text-gray-300">
       <a href="#cover-section" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="cover-section">Home</a> 
       <a href="#professional-summary" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="professional-summary">About</a>
       <a href="#portfolio-viewer" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="portfolio-viewer">Portfolio</a>
@@ -558,7 +650,23 @@
       <a href="#skills" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="skills">Skills</a>
       <a href="#contact" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="contact">Contact</a>
     </div>
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
    </nav>
+   <!-- Mobile Menu -->
+   <div class="mobile-menu" id="mobile-menu">
+     <a href="#cover-section" class="mobile-nav-link" data-section="cover-section">Home</a>
+     <a href="#professional-summary" class="mobile-nav-link" data-section="professional-summary">About</a>
+     <a href="#portfolio-viewer" class="mobile-nav-link" data-section="portfolio-viewer">Portfolio</a>
+     <a href="#experience" class="mobile-nav-link" data-section="experience">Experience</a>
+     <a href="#education" class="mobile-nav-link" data-section="education">Education</a>
+     <a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a>
+     <a href="#contact" class="mobile-nav-link" data-section="contact">Contact</a>
+   </div>
   </header>
   
   <!-- Cover Image Section -->
@@ -3404,6 +3512,40 @@
       });
     }
 
+    // Mobile menu toggle functionality
+    function setupMobileMenu() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      
+      if (mobileMenuButton && mobileMenu) {
+        // Toggle menu on button click
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenuButton.classList.toggle('active');
+          mobileMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        mobileNavLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenuButton.classList.remove('active');
+            mobileMenu.classList.remove('active');
+          });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const isClickInsideMenu = mobileMenu.contains(event.target);
+          const isClickOnButton = mobileMenuButton.contains(event.target);
+          
+          if (!isClickInsideMenu && !isClickOnButton && mobileMenu.classList.contains('active')) {
+            mobileMenuButton.classList.remove('active');
+            mobileMenu.classList.remove('active');
+          }
+        });
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       setupScrollButtons();
       setupContactForm();
@@ -3418,6 +3560,7 @@
       setupNavigationTracking();
       setupDownloadResumeButton();
       setupPortfolioTabs();
+      setupMobileMenu();
       
       // Show welcome popup on first visit
       setTimeout(() => {
