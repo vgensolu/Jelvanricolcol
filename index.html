@@ -567,7 +567,6 @@
     }
     
     .mobile-menu {
-      display: none;
       position: fixed;
       top: 72px;
       left: 0;
@@ -575,15 +574,21 @@
       background-color: rgba(0, 0, 0, 0.98);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 1.5rem;
+      padding: 0 1.5rem;
       z-index: 40;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     }
     
     .mobile-menu.active {
       max-height: 500px;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      opacity: 1;
+      visibility: visible;
       border-bottom: 1px solid rgba(255, 163, 102, 0.3);
     }
     
@@ -615,15 +620,11 @@
     /* Mobile responsive breakpoint */
     @media (max-width: 767px) {
       .desktop-nav {
-        display: none !important;
+        display: none;
       }
       
       .mobile-menu-button {
         display: flex;
-      }
-      
-      .mobile-menu {
-        display: block;
       }
     }
   </style>
@@ -687,7 +688,6 @@
     <div class="desktop-nav flex items-center gap-8 text-sm font-medium text-gray-300">
       <a href="#cover-section" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="cover-section">Home</a> 
       <a href="#professional-summary" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="professional-summary">About</a>
-      <a href="#portfolio-viewer" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="portfolio-viewer">Portfolio</a>
       <a href="#experience" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="experience">Experience</a> 
       <a href="#education" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="education">Education</a>
       <a href="#skills" class="nav-link hover:text-orange-400 transition-colors duration-200" data-section="skills">Skills</a>
@@ -704,7 +704,6 @@
    <div class="mobile-menu" id="mobile-menu">
      <a href="#cover-section" class="mobile-nav-link" data-section="cover-section">Home</a>
      <a href="#professional-summary" class="mobile-nav-link" data-section="professional-summary">About</a>
-     <a href="#portfolio-viewer" class="mobile-nav-link" data-section="portfolio-viewer">Portfolio</a>
      <a href="#experience" class="mobile-nav-link" data-section="experience">Experience</a>
      <a href="#education" class="mobile-nav-link" data-section="education">Education</a>
      <a href="#skills" class="mobile-nav-link" data-section="skills">Skills</a>
@@ -847,153 +846,6 @@
     </div>
    </section>
    
-   <!-- Tabbed Portfolio Viewer Section -->
-   <section id="portfolio-viewer" class="fade-in" aria-labelledby="portfolio-viewer-heading">
-    <div class="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200 shadow-xl shadow-slate-300/60 overflow-hidden">
-     <!-- Folder Tabs / Ribbons -->
-     <div class="relative">
-      <div class="flex border-b border-slate-200 bg-gradient-to-b from-slate-100 to-white">
-       <button class="portfolio-tab active px-6 py-4 text-sm font-semibold text-slate-700 border-b-2 border-orange-400 bg-white relative transition-all duration-300 hover:bg-orange-50" data-tab="experience">
-        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-        </svg>
-        Experience
-       </button>
-       <button class="portfolio-tab px-6 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-50 transition-all duration-300" data-tab="education">
-        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
-        </svg>
-        Education
-       </button>
-       <button class="portfolio-tab px-6 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-50 transition-all duration-300" data-tab="skills">
-        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-        </svg>
-        Skills
-       </button>
-      </div>
-     </div>
-     
-     <!-- Tab Content Container -->
-     <div class="p-8 lg:p-12 min-h-[500px]">
-      <!-- Experience Tab Content -->
-      <div id="tab-experience" class="tab-content active animate-paper-unfold">
-       <h2 class="text-3xl font-bold text-slate-900 mb-6">Professional Experience</h2>
-       <div class="space-y-6">
-        <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all duration-300">
-         <div class="flex items-start justify-between mb-3">
-          <div>
-           <h3 class="text-lg font-bold text-slate-900">Global English Advertising Advisor</h3>
-           <p class="text-sm text-orange-400 font-medium">Concentrix Philippines</p>
-          </div>
-          <span class="text-xs text-slate-500 font-medium">Current</span>
-         </div>
-         <p class="text-sm text-slate-700">Managing digital advertising strategy, platform policy compliance, and brand safety for international brands.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all duration-300">
-         <div class="flex items-start justify-between mb-3">
-          <div>
-           <h3 class="text-lg font-bold text-slate-900">Offshore Human Resources Specialist</h3>
-           <p class="text-sm text-orange-400 font-medium">Teleperformance USA - Shared Services</p>
-          </div>
-          <span class="text-xs text-slate-500 font-medium">2 Years</span>
-         </div>
-         <p class="text-sm text-slate-700">Supported HR operations for 30,000+ employees across the United States.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all duration-300">
-         <div class="flex items-start justify-between mb-3">
-          <div>
-           <h3 class="text-lg font-bold text-slate-900">Offshore Onboarding Specialist</h3>
-           <p class="text-sm text-orange-400 font-medium">Teleperformance USA</p>
-          </div>
-          <span class="text-xs text-slate-500 font-medium">6 Months</span>
-         </div>
-         <p class="text-sm text-slate-700">Managed end-to-end onboarding for approximately 70 remote agents weekly.</p>
-        </div>
-       </div>
-      </div>
-      
-      <!-- Education Tab Content -->
-      <div id="tab-education" class="tab-content hidden">
-       <h2 class="text-3xl font-bold text-slate-900 mb-6">Academic Credentials</h2>
-       <div class="space-y-6">
-        <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
-         <div class="flex items-center justify-between mb-3">
-          <h3 class="text-xl font-bold text-slate-900">Dual Master's Degrees</h3>
-          <span class="px-3 py-1 rounded-full bg-orange-400 text-white text-xs font-bold">Completed</span>
-         </div>
-         <p class="text-sm text-orange-400 font-medium mb-3">Universidad Isabel I, Spain • 2025 • GPA: 4.0</p>
-         <div class="space-y-3">
-          <div class="pl-4 border-l-2 border-orange-400">
-           <h4 class="text-sm font-bold text-slate-900 mb-1">Master's in HR & Talent Management</h4>
-           <p class="text-xs text-slate-700">Strategic HR management, organizational behavior, and talent development.</p>
-          </div>
-          <div class="pl-4 border-l-2 border-orange-400">
-           <h4 class="text-sm font-bold text-slate-900 mb-1">Master's in AI for Business</h4>
-           <p class="text-xs text-slate-700">AI-driven analytics, predictive modeling, and HR automation.</p>
-          </div>
-         </div>
-        </div>
-        <div class="p-6 rounded-2xl bg-white border border-slate-200">
-         <div class="flex items-center justify-between mb-3">
-          <h3 class="text-xl font-bold text-slate-900">BS Business Administration</h3>
-          <span class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-xs font-bold">Completed</span>
-         </div>
-         <p class="text-sm text-slate-600 font-medium mb-2">University of Northern Philippines • 2018</p>
-         <p class="text-sm text-slate-700">Major: HR Development Management</p>
-        </div>
-       </div>
-      </div>
-      
-      <!-- Skills Tab Content -->
-      <div id="tab-skills" class="tab-content hidden">
-       <h2 class="text-3xl font-bold text-slate-900 mb-6">Core Competencies & Tools</h2>
-       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 rounded-2xl bg-white border border-slate-200">
-         <h3 class="text-lg font-bold text-slate-900 mb-4">HR & People Management</h3>
-         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-400 text-xs font-semibold">Recruitment</span>
-          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-400 text-xs font-semibold">Onboarding</span>
-          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-400 text-xs font-semibold">Performance Management</span>
-          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-400 text-xs font-semibold">Employee Relations</span>
-          <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-400 text-xs font-semibold">Compliance</span>
-         </div>
-        </div>
-        <div class="p-6 rounded-2xl bg-white border border-slate-200">
-         <h3 class="text-lg font-bold text-slate-900 mb-4">Digital & Marketing</h3>
-         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Facebook Ads</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Google Ads</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">TikTok Ads</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Content Creation</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Brand Safety</span>
-         </div>
-        </div>
-        <div class="p-6 rounded-2xl bg-white border border-slate-200">
-         <h3 class="text-lg font-bold text-slate-900 mb-4">Technical Skills</h3>
-         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">HTML/CSS/JS</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Python</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Web Development</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Automation</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">AI Tools</span>
-         </div>
-        </div>
-        <div class="p-6 rounded-2xl bg-white border border-slate-200">
-         <h3 class="text-lg font-bold text-slate-900 mb-4">Software & Platforms</h3>
-         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Google Workspace</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Microsoft Office</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Canva</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Zoho</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">Slack</span>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
    
    <!-- Professional Experience -->
    <section id="experience" class="fade-in space-y-6" aria-labelledby="experience-heading">
@@ -1302,18 +1154,22 @@
     </div>
    </section>
   </main><!-- Floating Services Button (Bottom Right) -->
-  <button id="floating-services-btn" class="fixed bottom-6 right-6 z-[60] w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-400 shadow-xl shadow-slate-300/60 flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 pulse-glow" aria-label="Open Services">
-    <!-- Sound Wave Animation -->
-    <div class="sound-wave-container">
-      <div class="sound-wave"></div>
-      <div class="sound-wave"></div>
-      <div class="sound-wave"></div>
-      <div class="sound-wave"></div>
-    </div>
-    <!-- Icon -->
-    <svg class="w-8 h-8 text-orange-400 wave-animation relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
-  </button><!-- Services Wheel Modal -->
+  <!-- Floating Services Button with Label -->
+  <div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-2">
+    <span class="text-sm font-semibold text-slate-700 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-md border border-slate-200">Services</span>
+    <button id="floating-services-btn" class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-400 shadow-xl shadow-slate-300/60 flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 pulse-glow" aria-label="Open Services">
+      <!-- Sound Wave Animation -->
+      <div class="sound-wave-container">
+        <div class="sound-wave"></div>
+        <div class="sound-wave"></div>
+        <div class="sound-wave"></div>
+        <div class="sound-wave"></div>
+      </div>
+      <!-- Icon -->
+      <svg class="w-8 h-8 text-orange-400 wave-animation relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    </button>
+  </div><!-- Services Wheel Modal -->
   <div id="services-wheel-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
    <div class="relative flex items-center justify-center w-full h-full"><!-- Center Hub -->
     <div class="absolute z-20 w-32 h-32 rounded-full bg-gradient-to-br from-orange-400 to-orange-400 shadow-xl shadow-slate-300/60 flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300" id="services-hub-modal">
