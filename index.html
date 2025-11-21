@@ -580,12 +580,13 @@
       overflow: hidden;
       opacity: 0;
       visibility: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+      transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     }
     
     .mobile-menu.active {
       max-height: 500px;
-      padding: 1.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
       opacity: 1;
       visibility: visible;
       border-bottom: 1px solid rgba(255, 163, 102, 0.3);
@@ -619,7 +620,7 @@
     /* Mobile responsive breakpoint */
     @media (max-width: 767px) {
       .desktop-nav {
-        display: none !important;
+        display: none;
       }
       
       .mobile-menu-button {
