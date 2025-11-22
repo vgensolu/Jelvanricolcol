@@ -23,6 +23,7 @@ Then navigate to `http://localhost:8000`
 ## Documentation
 
 - See [SETUP.md](SETUP.md) for detailed setup and troubleshooting instructions
+- See [DNS_SETUP.md](DNS_SETUP.md) for custom domain and email configuration guide
 - See [FIX_SUMMARY.md](FIX_SUMMARY.md) for information about recent fixes and improvements
 
 ## License
